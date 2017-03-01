@@ -29,12 +29,9 @@ public class SpeechRecognizerManager {
     private Communicate com ;
 
 
-    public SpeechRecognizerManager(Context context,int i) {
+    public SpeechRecognizerManager(Context context) {
         this.mContext = context;
-        if(i == 1)
-            initPockerSphinx();
-        else
-            initPockerSphinx2();
+        initPockerSphinx();
     }
 
     private void initPockerSphinx() {
@@ -82,52 +79,7 @@ public class SpeechRecognizerManager {
 
     }
 
-    private void initPockerSphinx2() {
 
-        new AsyncTask<Void, Void, Exception>() {
-            @Override
-            protected Exception doInBackground(Void... params) {
-                try {
-                    Assets assets = new Assets(mContext);
-
-                    //Performs the synchronization of assets in the application and external storage
-                    File assetDir = assets.syncAssets();
-
-
-                    //Creates a new speech recognizer builder with default configuration
-                    SpeechRecognizerSetup speechRecognizerSetup = SpeechRecognizerSetup.defaultSetup();
-
-                    speechRecognizerSetup.setAcousticModel(new File(assetDir, "en-us-ptm"));
-                    speechRecognizerSetup.setDictionary(new File(assetDir, "cmudict-en-us.dict"));
-
-                    // Threshold to tune for keyphrase to balance between false alarms and misses
-                    speechRecognizerSetup.setKeywordThreshold(1e-15f);
-
-                    //Creates a new SpeechRecognizer object based on previous set up.
-                    mPocketSphinxRecognizer = speechRecognizerSetup.getRecognizer();
-
-                    // Create keyword-activation search.-
-                    mPocketSphinxRecognizer.addKeyphraseSearch(KWS_SEARCH, KEYPHRASE);
-                    mPocketSphinxRecognizer.addListener(new PocketSphinxRecognitionListener());
-                } catch (IOException e) {
-                    return e;
-                }
-                return null;
-            }
-
-            // For Try Something2
-
-            @Override
-            protected void onPostExecute(Exception result) {
-                if (result != null) {
-                    Toast.makeText(mContext, "Failed to init pocketSphinxRecognizer ", Toast.LENGTH_SHORT).show();
-                } else {
-                    restartSearch(KWS_SEARCH);
-                }
-            }
-        }.execute();
-
-    }
 
     // TODO Say Something Here
     public void setCom(Communicate com) {
