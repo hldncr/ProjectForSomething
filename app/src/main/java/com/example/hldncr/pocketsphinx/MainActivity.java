@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity implements SpeechRecognizerM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        manager = new SpeechRecognizerManager(this,1) ;
+        manager = new SpeechRecognizerManager(this) ;
         manager.setCom(this);
     }
 
 
 
-    //Opening emergency time activity, when SpeechRecognizerManager called this function with Interface
+    //Opening the emergency time activity, when SpeechRecognizerManager calls this function with Interface
     @Override
     public void comResult(){
         Intent intent = new Intent(MainActivity.this,RescueActivity.class) ;
