@@ -3,6 +3,7 @@ package com.example.hldncr.pocketsphinx;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.jar.Manifest;
 
 import edu.cmu.pocketsphinx.Assets;
 import edu.cmu.pocketsphinx.Hypothesis;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements SpeechRecognizerM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityCompat.requestPermissions(MainActivity.this,new String[]{android.Manifest.permission.RECORD_AUDIO},1);
         manager = new SpeechRecognizerManager(this) ;
         manager.setCom(this);
     }
