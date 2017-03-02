@@ -23,7 +23,7 @@ public class SpeechRecognizerManager {
     private static final String LOG_TAG = "1453" ;
     private static final String KWS_SEARCH = "wakeup";
 
-    // This string is setting KeyWord so when Listener recognizer this word , Listener will start the function in MainActivity
+    // This string is setting the KeyWord for the Listener which recognizes the word , Listener will then start the function from the MainActivity
     private static final String KEYPHRASE = "help me" ;
 
     // Open-Source Speech Recognizer
@@ -40,7 +40,7 @@ public class SpeechRecognizerManager {
         initPockerSphinx();
     }
 
-    // Setting Up and Initialize Speech Recognizer
+    // Setting Up and Initializing the Speech Recognizer
     private void initPockerSphinx() {
 
         new AsyncTask<Void, Void, Exception>() {
@@ -54,7 +54,7 @@ public class SpeechRecognizerManager {
                     //Creates a new speech recognizer builder with default configuration
                     SpeechRecognizerSetup speechRecognizerSetup = SpeechRecognizerSetup.defaultSetup();
 
-                    // For Language
+                    // For Setting The Language
                     speechRecognizerSetup.setAcousticModel(new File(assetDir, "en-us-ptm"));
                     speechRecognizerSetup.setDictionary(new File(assetDir, "cmudict-en-us.dict"));
 
@@ -64,7 +64,7 @@ public class SpeechRecognizerManager {
                     //Creates a new SpeechRecognizer object
                     mPocketSphinxRecognizer = speechRecognizerSetup.getRecognizer();
 
-                    // Add KEYWORD and Listener
+                    // Adds KEYWORD and Listener
                     mPocketSphinxRecognizer.addKeyphraseSearch(KWS_SEARCH, KEYPHRASE);
                     mPocketSphinxRecognizer.addListener(new PocketSphinxRecognitionListener());
                 } catch (IOException e) {
@@ -87,7 +87,7 @@ public class SpeechRecognizerManager {
 
 
 
-    // Setting Communicate Object
+    // Implement Communicate Object
     public void setCom(Communicate com) {
         this.com = com;
     }
@@ -96,22 +96,18 @@ public class SpeechRecognizerManager {
     // Restart function for loop
     private void restartSearch(String searchName) {
         mPocketSphinxRecognizer.stop();
+        com.IsItRecording(2);
         mPocketSphinxRecognizer.startListening(searchName);
     }
 
-
-    // This interface for communicate from SpeechRecognizerManager to MainActivity
-    public interface Communicate {
-        public void comResult() ;
-    }
 
     //Speech Listener Object
     protected class PocketSphinxRecognitionListener implements edu.cmu.pocketsphinx.RecognitionListener {
 
         @Override
-        public void onBeginningOfSpeech()
-        {
+        public void onBeginningOfSpeech() {
             Log.e(LOG_TAG,"OnBeginning") ;
+            com.IsItRecording(1);
         }
 
         @Override
@@ -143,6 +139,7 @@ public class SpeechRecognizerManager {
         @Override
         public void onEndOfSpeech() {
             Log.e(LOG_TAG,"EndOfSpeech") ;
+            com.IsItRecording(3);
         }
 
         public void onError(Exception error)
@@ -154,5 +151,9 @@ public class SpeechRecognizerManager {
         public void onTimeout() {
         }
     }
-
+    // The interface for communication between the SpeechRecognizerManager and MainActivity
+    public interface Communicate {
+        public void comResult() ;
+        public void IsItRecording(int b) ;
+    }
 }
