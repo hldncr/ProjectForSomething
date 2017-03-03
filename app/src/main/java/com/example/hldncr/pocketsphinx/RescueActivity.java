@@ -26,7 +26,7 @@ public class RescueActivity extends AppCompatActivity {
         //Get Context
         c = getApplicationContext();
 
-        //Creating Vibrator Object and vibrate 2 second 
+        //Creating Vibrator Object and vibrate 2 second
         v = (Vibrator) this.c.getSystemService(Context.VIBRATOR_SERVICE) ;
         v.vibrate(2000);
 
@@ -42,6 +42,9 @@ public class RescueActivity extends AppCompatActivity {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
+            
+            //TODO Add oto-message for your location
+
             startActivity(phoneIntent);
         }
 
