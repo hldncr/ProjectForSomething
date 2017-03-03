@@ -14,11 +14,14 @@ emergency situation, wait until the second vibration. When the second
 vibration starts, the 911 operator will be listening to you so try to 
 clue them in about your situation.
 
-This is still a Beta version so bugs may be encountered.
-
-Designed by : Agon Asani and Halid Dincher
+*This is still a Beta version so bugs may be encountered.
 
 Example ScreenShot From App:
 
 <img src="https://raw.githubusercontent.com/hldncr/ProjectForSomething/master/Screenshot%20From%20App/Interface_Screen.png" width="350" height="650">
 <img src="https://raw.githubusercontent.com/hldncr/ProjectForSomething/master/Screenshot%20From%20App/Emergency_Screen.png" width="350" height="650">
+
+
+
+
+                                                                                      Designed by : Agon Asani and Halid Dincher
