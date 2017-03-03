@@ -24,4 +24,4 @@ Example ScreenShot From App:
 
 
 
-                                                                                      Designed by : Agon Asani and Halid Dincher
+                                       Designed by : Agon Asani and Halid Dincher
