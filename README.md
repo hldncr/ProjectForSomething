@@ -21,3 +21,5 @@ Designed by : Agon Asani and Halid Dincher
 Example ScreenShot From App:
 
 ![Alt text](https://raw.githubusercontent.com/hldncr/ProjectForSomething/master/Screenshot%20From%20App/Interface_Screen.png?raw=true "Optional title")
+
+<img src="https://raw.githubusercontent.com/hldncr/ProjectForSomething/master/Screenshot%20From%20App/Interface_Screen.png" width="48">
