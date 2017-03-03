@@ -20,4 +20,4 @@ Designed by : Agon Asani and Halid Dincher
 
 Example ScreenShot From App:
 
-![Alt text](http://raw.github.com/hldncr/ProjectForSomething/Screenshot From App/Interface_Screen.png?raw=true)
+![Alt text](https://raw.github.com/hldncr/ProjectForSomething/Screenshot From App/Interface_Screen.png?raw=true)
