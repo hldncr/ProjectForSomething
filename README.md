@@ -17,3 +17,7 @@ clue them in about your situation.
 This is still a Beta version so bugs may be encountered.
 
 Designed by : Agon Asani and Halid Dincher
+
+Example ScreenShot From App:
+
+![alt tag](https://raw.githubusercontent.com/hldncr/ProjectForSomething/blob/master/Screenshot%20From%20App/Interface_Screen.png)
