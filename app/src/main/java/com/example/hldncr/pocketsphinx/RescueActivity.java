@@ -15,23 +15,51 @@ public class RescueActivity extends AppCompatActivity {
 
     private Vibrator v ;
     private Context c;
-
+    Boolean sw1,sw2 ;
+    private View decorView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        decorView = getWindow().getDecorView();
         setContentView(R.layout.activity_rescue);
 
-        c = getApplicationContext() ;
-        v = (Vibrator) this.c.getSystemService(Context.VIBRATOR_SERVICE) ;
-        v.vibrate(10000);
+        //Get Context
+        c = getApplicationContext();
 
-        /*Intent phoneIntent = new Intent(Intent.ACTION_CALL);
-        phoneIntent.setData(Uri.parse("tel:911"));
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            return;
+        //Creating Vibrator Object and vibrate 2 second 
+        v = (Vibrator) this.c.getSystemService(Context.VIBRATOR_SERVICE) ;
+        v.vibrate(2000);
+
+        //Taking Switch Situatuion from Other Activity
+        Intent intent = getIntent() ;
+        sw1 = intent.getExtras().getBoolean("Switch1") ;
+        sw2 = intent.getExtras().getBoolean("Switch2") ;
+
+        // Dialing 911 if switch2 open
+        if(sw2) {
+            Intent phoneIntent = new Intent(Intent.ACTION_CALL);
+            phoneIntent.setData(Uri.parse("tel:911"));
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            startActivity(phoneIntent);
         }
-        startActivity(phoneIntent);
-*/
+
+        // Vibrate 5 second after call
+        v.vibrate(5000);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
     }
 
     public void GoBack(View view) {
