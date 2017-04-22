@@ -118,9 +118,6 @@ public class SpeechRecognizerManager {
 
             String text = hypothesis.getHypstr();
 
-            if(com!=null)
-                com.comResult();
-
             if (text.contains(KEYPHRASE)) {
 
                 Toast.makeText(mContext, "You said:" + text, Toast.LENGTH_SHORT).show();

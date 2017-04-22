@@ -42,8 +42,8 @@ public class RescueActivity extends AppCompatActivity {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            
-            //TODO Add oto-message for your location
+
+            //TODO Add Send Message Function To 911
 
             startActivity(phoneIntent);
         }
