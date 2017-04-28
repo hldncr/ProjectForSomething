@@ -11,22 +11,56 @@
     tools:context="com.example.hldncr.pocketsphinx.RescueActivity"
     android:background="#D32F2F">
 
-    <TextView
-        android:text="Calling 911"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="40sp"
-        android:id="@+id/textView" />
-
     <Button
         android:text="False Alarm"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:onClick="GoBack"
+        android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="GoBack"
-        android:id="@+id/button" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_height="75dp" />
+
+    <TextView
+        android:text="Calling 911 in 5 second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:id="@+id/maintextview"
+        android:layout_marginTop="117dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:text="You are in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Title" />
+
+        <TextView
+            android:text="x : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/coordinatX" />
+
+        <TextView
+            android:text="y:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/coordinatY" />
+    </LinearLayout>
+
+
 </RelativeLayout>

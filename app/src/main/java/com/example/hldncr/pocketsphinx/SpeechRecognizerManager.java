@@ -59,7 +59,7 @@ public class SpeechRecognizerManager {
                     speechRecognizerSetup.setDictionary(new File(assetDir, "cmudict-en-us.dict"));
 
                     // For Sensivity
-                    speechRecognizerSetup.setKeywordThreshold(1e-25f);
+                    speechRecognizerSetup.setKeywordThreshold(1e-20f);
 
                     //Creates a new SpeechRecognizer object
                     mPocketSphinxRecognizer = speechRecognizerSetup.getRecognizer();
